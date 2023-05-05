@@ -1,0 +1,17 @@
+{% for day, menu in week.items %}
+    <h2>{{ day }}</h2>
+    <ul>
+        {% for item in menu %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    {% if forloop.parentloop.counter0 == 2 %}
+        {% if day == 'Thursday' %}
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Vote</button>
+            </form>
+        {% endif %}
+    {% endif %}
+{% endfor %}
